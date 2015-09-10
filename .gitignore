@@ -11,4 +11,4 @@
 *.ear
 
 *.iml
-*.idea
+*.idea .*xml .*png .*html
