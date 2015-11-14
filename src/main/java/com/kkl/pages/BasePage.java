@@ -11,11 +11,11 @@ import org.openqa.selenium.WebElement;
  * @author paxa1887
  *
  */
-public abstract class Page {
+public abstract class BasePage {
 
 	protected WebDriver driver;
 
-	public Page(WebDriver driver) {
+	public BasePage(WebDriver driver) {
 		this.driver = driver;
 	}
 
@@ -34,6 +34,27 @@ public abstract class Page {
 		} catch (NoSuchElementException e) {
 			return false;
 		}
+	}
+
+	protected void WaitRenderElement(WebElement element) throws InterruptedException {
+		while (!element.isDisplayed()) {
+
+			Thread.sleep(5000);
+
+		}
+
+	}
+
+	protected void WaitBecomesClickable() throws InterruptedException {
+		Thread.sleep(5000);
+	}
+
+	protected void ChangeWindow(WebElement element) {
+		driver.switchTo().frame(element);
+	}
+
+	protected void WaitReport() throws InterruptedException {
+		Thread.sleep(120000);
 	}
 
 }

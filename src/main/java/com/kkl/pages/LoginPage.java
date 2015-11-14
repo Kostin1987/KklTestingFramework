@@ -15,7 +15,7 @@ import com.kkl.utils.ConfigProperties;
  * @author paxa1887
  *
  */
-public class LoginPage extends Page {
+public class LoginPage extends BasePage {
 
 	@FindBy(id = "username")
 	public WebElement fieldUserName;
@@ -31,9 +31,14 @@ public class LoginPage extends Page {
 
 	}
 
-	public HomePage loginAs(UserData admin) {
+	public HomePage loginAs(UserData admin) throws InterruptedException {
+		WaitRenderElement(fieldUserName);
 		type(fieldUserName, admin.name);
+		
+		WaitRenderElement(fieldPassword);
 		type(fieldPassword, admin.password);
+		
+		WaitRenderElement(buttonLogin);
 		buttonLogin.click();
 		return PageFactory.initElements(driver, HomePage.class);
 

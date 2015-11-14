@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
  * @author paxa1887
  *
  */
-public class HomePage extends Page {
+public class HomePage extends BasePage {
 
 	public HomePage(WebDriver driver) {
 		super(driver);
@@ -55,8 +55,11 @@ public class HomePage extends Page {
 		return isElementPresent(dropLogOut);
 	}
 
-	public void logout() {
+	public void logout() throws InterruptedException {
+		WaitRenderElement(dropLogOut);
 		dropLogOut.click();
+		
+		WaitRenderElement(linkLogOut);
 		linkLogOut.click();
 	}
 
